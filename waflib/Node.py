@@ -31,7 +31,6 @@ exclude_regs = '''
 **/%*%
 **/._*
 **/*.swp
-**/*.pyc
 **/CVS
 **/CVS/**
 **/.cvsignore
