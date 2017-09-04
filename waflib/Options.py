@@ -55,7 +55,7 @@ class opt_parser(optparse.OptionParser):
 
 	def _process_args(self, largs, rargs, values):
 		"""
-		Custom _process_args to allow unknown options accorid to the allow_unknown status
+		Custom _process_args to allow unknown options according to the allow_unknown status
 		"""
 		while rargs:
 			try:
