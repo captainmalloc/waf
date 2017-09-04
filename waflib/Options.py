@@ -42,7 +42,7 @@ class opt_parser(optparse.OptionParser):
 	"""
 	Command-line options parser.
 	"""
-	def __init__(self, ctx):
+	def __init__(self, ctx, allow_unknown=False):
 		# Create a option parser without help function because we need to be able ignore '-h|--help'
 		#  at configuration phase, once the main script found, we will add the help option to make sure
 		#  we if help is needed it will containt also user defined options
@@ -51,7 +51,7 @@ class opt_parser(optparse.OptionParser):
 		self.formatter.width = Logs.get_term_cols()
 		self.ctx = ctx
 		# By default do not allow unknown options
-		self.allow_unknown = False
+		self.allow_unknown = allow_unknown
 
 	def _process_args(self, largs, rargs, values):
 		"""
