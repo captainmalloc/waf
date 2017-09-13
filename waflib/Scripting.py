@@ -38,17 +38,6 @@ def waf_entry_point(current_directory, version, wafdir):
 	start_dir = current_directory
 	no_climb = os.environ.get('NOCLIMB')
 
-	if len(sys.argv) > 1:
-		# os.path.join handles absolute paths
-		# if sys.argv[1] is not an absolute path, then it is relative to the current working directory
-		potential_wscript = os.path.join(current_directory, sys.argv[1])
-		if os.path.basename(potential_wscript) == Context.WSCRIPT_FILE and os.path.isfile(potential_wscript):
-			# need to explicitly normalize the path, as it may contain extra '/.'
-			path = os.path.normpath(os.path.dirname(potential_wscript))
-			start_dir = os.path.abspath(path)
-			no_climb = True
-			sys.argv.pop(1)
-
 	ctx = Context.create_context('options')
 	(options, commands, env) = ctx.parse_cmd_args(allow_unknown=True)
 	if options.top:
