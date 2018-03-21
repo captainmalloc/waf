@@ -168,6 +168,12 @@ class Node(object):
 		"""
 		raise Errors.WafError('nodes are not supposed to be copied')
 
+	def __hash__(self):
+		return hash((self.name, self.parent))
+
+	def __eq__(self, other):
+		return (self.name, self.parent) == (other.name, other.parent)
+
 	def read(self, flags='r', encoding='latin-1'):
 		"""
 		Reads and returns the contents of the file represented by this node, see :py:func:`waflib.Utils.readf`::
